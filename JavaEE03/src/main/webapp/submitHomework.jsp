@@ -1,4 +1,4 @@
-<%@ page import="org.example.javaee.class03.model.Homework" %>
+<%@ page import="org.example.javaee.Homework" %>
 <%--
   Created by IntelliJ IDEA.
   User: Lenovo

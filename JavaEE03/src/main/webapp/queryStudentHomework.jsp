@@ -1,6 +1,6 @@
 
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.javaee.class03.model.Homework" %><%--
+<%@ page import="org.example.javaee.Homework" %><%--
   Created by IntelliJ IDEA.
   User: Lenovo
   Date: 2020/3/11
