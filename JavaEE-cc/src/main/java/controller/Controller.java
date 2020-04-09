@@ -31,7 +31,7 @@ public class Controller {
 
         List<Homework> list = jdbc.showHomework();
 
-        return new ModelAndView("/jsp/queryStudentHomework.jsp", "list", list);
+        return new ModelAndView("queryStudentHomework.jsp", "list", list);
     }
 
 
@@ -40,7 +40,7 @@ public class Controller {
         //读取所有作业内容
         List<Homework> list = jdbc.showHomework();
 
-        return new ModelAndView("jsp/queryAllHomework.jsp", "list", list);
+        return new ModelAndView("queryAllHomework.jsp", "list", list);
     }
 
     @RequestMapping(path = "/query", method = RequestMethod.GET)
@@ -48,9 +48,8 @@ public class Controller {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         String id = request.getParameter("id");
-        //从数据库读取指定作业id的所有记录
         List<StudentHomework> list = jdbc.selectAll(id);//访问数据库
-        return new ModelAndView("jsp/homeworkSubmission.jsp", "list", list);
+        return new ModelAndView("homeworkSubmission.jsp", "list", list);
     }
 
     @RequestMapping(path = "/addHomework", method = RequestMethod.POST)
@@ -79,7 +78,7 @@ public class Controller {
         request.setAttribute("type","addHomework");
 
         try {
-            request.getRequestDispatcher("result.jsp").forward(request,resp);
+            request.getRequestDispatcher("check.jsp").forward(request,resp);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -110,7 +109,7 @@ public class Controller {
         request.setAttribute("isOK", result);  //用来判断是否添加作业成功
         request.setAttribute("type","addStudent");
         try {
-            request.getRequestDispatcher("result.jsp").forward(request,resp);
+            request.getRequestDispatcher("check.jsp").forward(request,resp);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -126,7 +125,7 @@ public class Controller {
 
         //读取指定id的作业内容详细信息
         Homework homework = jdbc.showHomeworkDetails(id);//访问数据库
-        return new ModelAndView("jsp/submitHomework.jsp", "homework", homework);
+        return new ModelAndView("submitHomework.jsp", "homework", homework);
     }
 
     @RequestMapping(path = "/submit", method = RequestMethod.POST)
@@ -155,7 +154,7 @@ public class Controller {
         req.setAttribute("isOK", result);   //用于判断是否提交成功
         req.setAttribute("type","addStudentHomework");
         try {
-            req.getRequestDispatcher("result.jsp").forward(req,resp);
+            req.getRequestDispatcher("check.jsp").forward(req,resp);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
